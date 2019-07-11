@@ -1,0 +1,28 @@
+
+# spring 配置
+spring:
+  application:
+    name: hcls
+  # 数据源配置
+  datasource:
+    url: jdbc:mysql://:3306/hcls?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
+    username:
+    password:
+    driverClassName: com.mysql.cj.jdbc.Driver
+  # Redis配置
+#  redis:
+#    database: 2
+#    host: 192.168.0.156
+#    port: 6379
+#    password: admin
+#    timeout: 60000
+  resources:
+    static-locations: classpath:static/, file:static/
+  jpa:
+    hibernate:
+      show-sql: true
+      ddl-auto: update
+  #时区设置
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss

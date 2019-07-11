@@ -1,0 +1,19 @@
+server:
+  port: 8099
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    session:
+      timeout: 36000s             #session 10小时过期
+
+spring:
+  application:
+    name: hcls
+  profiles:
+    active: dev
+
+logging:
+  path: ./log
+  file: hcls.log
+  level:
+    root: info
