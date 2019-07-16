@@ -10,7 +10,7 @@ const routers = [
         component: (resolve) => require(['./views/index.vue'], resolve)
     },{
         path: '/login',
-        name: '/login',
+        name: 'login',
         meta: {
             title: ''
         },
