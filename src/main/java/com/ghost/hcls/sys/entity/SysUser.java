@@ -21,6 +21,7 @@ public class SysUser extends BaseTimeEntity implements UserDetails {
     @Column(name = "user_account", columnDefinition = "varchar(256) comment '用户账号'")
     private String userAccount;
 
+    @JsonIgnore
     @Column(name = "password", columnDefinition = "varchar(256) comment '用户密码'")
     private String password;
 

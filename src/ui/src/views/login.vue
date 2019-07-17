@@ -31,12 +31,30 @@
                 <h1>
                     <img src="../images/logo.png">
                 </h1>
+            <Form :model="loginForm" :label-width="20"  @keydown.native.enter.prevent="submit('loginForm')">
+                <FormItem>
+                    <Icon type="ios-person" slot="label" size="16" />
+                    <div style="position: relative">
+                        <Input type="text" clearable v-model="loginForm.username"  :placeholder="aa"/>
+                    </div>
+                </FormItem>
+                <FormItem>
+                    <Icon type="ios-lock" slot="label" size="16" />
+                    <Input type="password" clearable  v-model="loginForm.password"  :placeholder="bb"/>
+                </FormItem>
+                <FormItem prop="login">
+                    <Button :loading="loading" type="primary" long @click="login">
+                        {{11}}
+                    </Button>
+                </FormItem>
+            </Form>
+
                     <Input v-model="username" size="large" type="text" placeholder="large size" />
                     <br>
                     <Input v-model="password" type="password" placeholder="default size" />
                 <h2>
                     <p>Welcome to your iView app!</p>
-                    <Button @click="handleStart">Login</Button>
+                    <Button @click="login">Login</Button>
                 </h2>
             </Col>
         </Row>
@@ -44,7 +62,35 @@
 </template>
 <script>
     export default {
+        data(){
+            return{
+                loginForm:{
+                    username:'',
+                    password:'',
+                },
+                username:'',
+                password:'',
+            }
+        },
+        mounted () {
+            this.getUser();
+        },
         methods: {
+            getUser(){
+                let data={};
+                this.$axios.post("/api/sysUser/list",data).then(res=>{
+                    console.log(res.data);
+                });
+            },
+            login(){
+                let data={
+                    username:this.username,
+                    password:this.password
+                };
+                this.$axios.post("/api/login",).then(res=>{
+                    console.log(res.data);
+                });
+            },
             handleStart () {
                 this.$Modal.info({
                     title: 'Bravo',

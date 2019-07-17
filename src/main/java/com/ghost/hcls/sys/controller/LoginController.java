@@ -1,22 +1,19 @@
 package com.ghost.hcls.sys.controller;
 
 import com.ghost.hcls.core.util.ResultMap;
-import com.ghost.hcls.sys.repository.SysUserRepository;
 import com.ghost.hcls.sys.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/sysUser")
-public class SysUserController {
+@RequestMapping("/")
+public class LoginController {
     @Autowired
     SysUserService sysUserService;
 
-    @RequestMapping("/list")
+    @RequestMapping("/login")
     public ResultMap list(){
-        return sysUserService.findAll();
+        return ResultMap.success().setData("good");
     }
 }
